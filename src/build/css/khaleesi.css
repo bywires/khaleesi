@@ -1,0 +1,51 @@
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.calendact .month {
+  display: inline-block;
+}
+.calendact .month .week {
+  zoom: 1;
+  margin-bottom: 1px;
+}
+.calendact .month .week:before,
+.calendact .month .week:after {
+  content: "";
+  display: table;
+}
+.calendact .month .week:after {
+  clear: both;
+}
+.calendact .month .week:last-of-type .day {
+  margin-bottom: 0;
+}
+.calendact .month .week .day {
+  box-sizing: border-box;
+  float: left;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background: gray;
+  margin-right: 1px;
+}
+.calendact .month .week .day:last-of-type {
+  margin-right: 0;
+}
+.calendact .month .week .day.selected {
+  background: yellow;
+}
+.calendact .month .week .day.arrival {
+  background: red;
+}
+.calendact .month .week .day.departure {
+  background: red;
+}

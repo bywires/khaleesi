@@ -1,0 +1,44 @@
+@import "./variables.less";
+@import "./mixins.less";
+
+.calendact {
+  .month {
+    display: inline-block;
+
+    .week {
+      .clearfix;
+      margin-bottom: @day-vertical-spacing;
+
+      &:last-of-type .day {
+        margin-bottom: 0;
+      }
+
+      .day {
+        box-sizing: border-box;
+        float: left;
+        width: @day-width;
+        height: @day-height;
+        text-align: center;
+        line-height: @day-height;
+        background: @day-default-color;
+        margin-right: @day-horizontal-spacing;
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+
+        &.selected {
+          background: @day-selected-color;
+        }
+
+        &.arrival {
+          background: @day-arrival-color;
+        }
+
+        &.departure {
+          background: @day-departure-color;
+        }
+      }
+    }
+  }
+}
