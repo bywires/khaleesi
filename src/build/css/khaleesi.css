@@ -9,43 +9,120 @@
 .clearfix:after {
   clear: both;
 }
-.calendact .month {
-  display: inline-block;
+.khaleesi {
+  float: left;
+  background: white;
 }
-.calendact .month .week {
+.khaleesi .months {
   zoom: 1;
-  margin-bottom: 1px;
+  padding: 5px;
 }
-.calendact .month .week:before,
-.calendact .month .week:after {
+.khaleesi .months:before,
+.khaleesi .months:after {
   content: "";
   display: table;
 }
-.calendact .month .week:after {
+.khaleesi .months:after {
   clear: both;
 }
-.calendact .month .week:last-of-type .day {
-  margin-bottom: 0;
-}
-.calendact .month .week .day {
-  box-sizing: border-box;
+.khaleesi .months > div {
   float: left;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  background: gray;
-  margin-right: 1px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
-.calendact .month .week .day:last-of-type {
+.khaleesi .months > div:nth-child(2n) {
   margin-right: 0;
 }
-.calendact .month .week .day.selected {
+.khaleesi .months > div:nth-child(2n + 1) {
+  clear: left;
+}
+.khaleesi .months > div:nth-last-child(-n + 2) {
+  margin-bottom: 0;
+}
+.khaleesi .day-labels {
+  zoom: 1;
+  margin-bottom: 1px;
+}
+.khaleesi .day-labels:before,
+.khaleesi .day-labels:after {
+  content: "";
+  display: table;
+}
+.khaleesi .day-labels:after {
+  clear: both;
+}
+.khaleesi .day-labels > div {
+  float: left;
+  margin-bottom: 1px;
+  margin-right: 1px;
+}
+.khaleesi .day-labels > div:nth-child(7n) {
+  margin-right: 0;
+}
+.khaleesi .day-labels > div:nth-child(7n + 1) {
+  clear: left;
+}
+.khaleesi .day-labels > div:nth-last-child(-n + 7) {
+  margin-bottom: 0;
+}
+.khaleesi .weeks {
+  zoom: 1;
+}
+.khaleesi .weeks:before,
+.khaleesi .weeks:after {
+  content: "";
+  display: table;
+}
+.khaleesi .weeks:after {
+  clear: both;
+}
+.khaleesi .weeks > div {
+  float: left;
+  margin-bottom: 1px;
+  margin-right: 1px;
+}
+.khaleesi .weeks > div:nth-child(7n) {
+  margin-right: 0;
+}
+.khaleesi .weeks > div:nth-child(7n + 1) {
+  clear: left;
+}
+.khaleesi .weeks > div:nth-last-child(-n + 7) {
+  margin-bottom: 0;
+}
+.khaleesi .day-base {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+.khaleesi .day-label {
+  background: slategray;
+  font: bold 10px arial, sans-serif;
+  color: white;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+.khaleesi .day {
+  background: lightgray;
+  font: 10px arial, sans-serif;
+  color: black;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+.khaleesi .day.hover {
+  background: lightslategray;
+}
+.khaleesi .day.selected {
   background: yellow;
 }
-.calendact .month .week .day.arrival {
+.khaleesi .day.arrival {
   background: red;
 }
-.calendact .month .week .day.departure {
-  background: red;
+.khaleesi .day.departure {
+  background: blue;
 }

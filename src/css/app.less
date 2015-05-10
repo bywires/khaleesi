@@ -1,44 +1,80 @@
-@import "./variables.less";
-@import "./mixins.less";
+@import './variables.less';
+@import './mixins.less';
 
-.calendact {
-  .month {
-    display: inline-block;
+.khaleesi {
+  float: left;
+  background: @panel-background;
 
-    .week {
-      .clearfix;
-      margin-bottom: @day-vertical-spacing;
+  .container(@row-size, @horizontal-spacing, @vertical-spacing) {
+    .clearfix;
 
-      &:last-of-type .day {
+    & > div {
+      float: left;
+      margin-bottom: @vertical-spacing;
+      margin-right: @horizontal-spacing;
+
+      &:nth-child(@{row-size}n) {
+        margin-right: 0;
+      }
+
+      &:nth-child(@{row-size}n + 1) {
+        clear: left;
+      }
+
+      &:nth-last-child(-n + @{row-size}) {
         margin-bottom: 0;
       }
+    }
+  }
 
-      .day {
-        box-sizing: border-box;
-        float: left;
-        width: @day-width;
-        height: @day-height;
-        text-align: center;
-        line-height: @day-height;
-        background: @day-default-color;
-        margin-right: @day-horizontal-spacing;
+  .months {
+    .container(@months-per-row, @month-horizontal-spacing, @month-vertical-spacing);
+    padding: @months-padding;
+  }
 
-        &:last-of-type {
-          margin-right: 0;
-        }
+  .day-labels {
+    .container(7, @day-horizontal-spacing, @day-vertical-spacing);
+    margin-bottom: @day-vertical-spacing;
+  }
 
-        &.selected {
-          background: @day-selected-color;
-        }
+  .weeks {
+    .container(7, @day-horizontal-spacing, @day-vertical-spacing);
+  }
 
-        &.arrival {
-          background: @day-arrival-color;
-        }
+  .day-base {
+    width: @day-width;
+    height: @day-height;
+    line-height: @day-height;
+    text-align: center;
+  }
 
-        &.departure {
-          background: @day-departure-color;
-        }
-      }
+  .day-label {
+    background: @day-label-color;
+    font: @day-label-font;
+    color: @day-label-font-color;
+    .day-base;
+  }
+
+  .day {
+    background: @day-default-color;
+    font: @day-font;
+    color: @day-font-color;
+    .day-base;
+
+    &.hover {
+      background: @day-hover-color;
+    }
+
+    &.selected {
+      background: @day-selected-color;
+    }
+
+    &.arrival {
+      background: @day-arrival-color;
+    }
+
+    &.departure {
+      background: @day-departure-color;
     }
   }
 }

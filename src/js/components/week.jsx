@@ -6,7 +6,7 @@ module.exports = React.createClass({
     render() {
         return (
             <div className="week">
-                {this.props.days.map(day => <Day number={day} />)}
+                {this.props.week.map(day => <Day day={day} />)}
             </div>
         );
     }

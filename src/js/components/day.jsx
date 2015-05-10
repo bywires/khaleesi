@@ -3,18 +3,13 @@ var React = require('react'),
 
 module.exports = React.createClass({
     render() {
-        var number = this.props.number || "";
-
         return (
             <div
                 className={cx({
                     'day': true,
-                    'today': this.props.isToday,
-                    'selected': this.props.isSelected,
-                    'arrival': this.props.isArrival,
-                    'departure': this.props.isDeparture
+                    'hover': this.props.day.hover
                 })}>
-                {number}
+                {this.props.day.number || ""}
             </div>
         );
     }

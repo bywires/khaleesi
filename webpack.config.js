@@ -26,7 +26,8 @@ module.exports = {
 
     output: {
         path: './src/build',
-        filename: 'js/[name].js'
+        filename: 'js/[name].js',
+        sourceMapFilename: 'js/[name].map'
     },
 
     plugins: [

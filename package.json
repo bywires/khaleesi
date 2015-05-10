@@ -11,9 +11,9 @@
   "author": "Bob McKee <bmckee@bywires.com>",
   "license": "ISC",
   "dependencies": {
-    "calendar": "^0.1.0",
     "flux": "^2.0.3",
     "jsx-loader": "^0.13.2",
+    "keymirror": "^0.1.1",
     "react": "^0.13.3"
   },
   "devDependencies": {
