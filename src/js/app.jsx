@@ -1,9 +1,16 @@
 var React = require('react'),
-    Calendact = require('components/khaleesi.jsx');
+    Khaleesi = require('components/khaleesi.jsx'),
+    Store = require('stores/khaleesi');
 
 require("app.less");
 
+var store = new Store({
+    startYear: 2015,
+    startMonth: 5,
+    monthCount: 4
+});
+
 React.render(
-    <Calendact />,
+    <Khaleesi store={store}/>,
     document.getElementById('attach')
 );

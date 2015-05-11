@@ -1,44 +1,28 @@
-@import './variables.less';
-@import './mixins.less';
+@import 'variables.less';
+@import 'mixins.less';
 
 .khaleesi {
   float: left;
   background: @panel-background;
 
-  .container(@row-size, @horizontal-spacing, @vertical-spacing) {
-    .clearfix;
-
-    & > div {
-      float: left;
-      margin-bottom: @vertical-spacing;
-      margin-right: @horizontal-spacing;
-
-      &:nth-child(@{row-size}n) {
-        margin-right: 0;
-      }
-
-      &:nth-child(@{row-size}n + 1) {
-        clear: left;
-      }
-
-      &:nth-last-child(-n + @{row-size}) {
-        margin-bottom: 0;
-      }
-    }
-  }
-
   .months {
-    .container(@months-per-row, @month-horizontal-spacing, @month-vertical-spacing);
+    .table(@months-per-row, @month-horizontal-spacing, @month-vertical-spacing);
     padding: @months-padding;
   }
 
+  .month-label {
+    font: @month-label-font;
+    color: @month-label-font-color;
+    text-align: center;
+  }
+
   .day-labels {
-    .container(7, @day-horizontal-spacing, @day-vertical-spacing);
+    .table(7, @day-horizontal-spacing, @day-vertical-spacing);
     margin-bottom: @day-vertical-spacing;
   }
 
   .weeks {
-    .container(7, @day-horizontal-spacing, @day-vertical-spacing);
+    .table(7, @day-horizontal-spacing, @day-vertical-spacing);
   }
 
   .day-base {

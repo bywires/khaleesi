@@ -39,6 +39,11 @@
 .khaleesi .months > div:nth-last-child(-n + 2) {
   margin-bottom: 0;
 }
+.khaleesi .month-label {
+  font: 14px / 20px arial, sans-serif;
+  color: black;
+  text-align: center;
+}
 .khaleesi .day-labels {
   zoom: 1;
   margin-bottom: 1px;
@@ -115,14 +120,14 @@
   text-align: center;
 }
 .khaleesi .day.hover {
-  background: lightslategray;
+  background: lightyellow;
 }
 .khaleesi .day.selected {
   background: yellow;
 }
 .khaleesi .day.arrival {
-  background: red;
+  background: gold;
 }
 .khaleesi .day.departure {
-  background: blue;
+  background: gold;
 }

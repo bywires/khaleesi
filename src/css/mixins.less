@@ -10,3 +10,25 @@
     clear: both;
   }
 }
+
+.table(@row-size, @horizontal-spacing, @vertical-spacing) {
+  .clearfix;
+
+  & > div {
+    float: left;
+    margin-bottom: @vertical-spacing;
+    margin-right: @horizontal-spacing;
+
+    &:nth-child(@{row-size}n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(@{row-size}n + 1) {
+      clear: left;
+    }
+
+    &:nth-last-child(-n + @{row-size}) {
+      margin-bottom: 0;
+    }
+  }
+}
