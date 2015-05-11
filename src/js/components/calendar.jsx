@@ -20,18 +20,16 @@ module.exports = React.createClass({
                     <i className="previous-button" onClick={this.previous}></i>
                     <i className="next-button" onClick={this.next}></i>
                 </div>
-                <ReactCSSTransitionGroup transitionName="month-iteration">
-                    <div className="months">
-                        {this.props.months.map(month =>
-                                <Month
-                                    key={month.year + "" + month.month}
-                                    store={this.props.store}
-                                    year={month.year}
-                                    month={month.month}
-                                    days={month.days} />
-                        )}
-                    </div>
-                </ReactCSSTransitionGroup>
+                <div className="months">
+                    {this.props.months.map(month =>
+                            <Month
+                                key={month.year + "" + month.month}
+                                store={this.props.store}
+                                year={month.year}
+                                month={month.month}
+                                days={month.days} />
+                    )}
+                </div>
             </div>
         );
     }

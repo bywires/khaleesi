@@ -49,8 +49,9 @@
   border-right: @width solid @color;
 }
 
-.transition(@transition) {
-  -webkit-transition: @transition;
-  -o-transition: @transition;
-  transition: @transition;
+.user-select(@value) {
+  user-select: @value;
+  -moz-user-select: @value;
+  -webkit-user-select: @value;
+  -ms-user-select: @value;
 }

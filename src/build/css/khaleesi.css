@@ -20,11 +20,19 @@
   position: absolute;
   top: 6px;
   cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 .khaleesi .month-nav .previous-button {
   position: absolute;
   top: 6px;
   cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   width: 0;
   height: 0;
   border-top: 6px solid transparent;
@@ -36,6 +44,10 @@
   position: absolute;
   top: 6px;
   cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   width: 0;
   height: 0;
   border-top: 6px solid transparent;
@@ -70,6 +82,10 @@
   margin-bottom: 0;
 }
 .khaleesi .month-label {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   font: 14px / 20px arial, sans-serif;
   color: black;
   text-align: center;
@@ -135,6 +151,10 @@
   background: slategray;
   font: bold 10px arial, sans-serif;
   color: white;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   width: 20px;
   height: 20px;
   line-height: 20px;
@@ -144,6 +164,10 @@
   background: lightgray;
   font: 10px arial, sans-serif;
   color: black;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   width: 20px;
   height: 20px;
   line-height: 20px;
@@ -160,11 +184,4 @@
 }
 .khaleesi .day.departure {
   background: gold;
-}
-.month-iteration {
-  opacity: 0.01;
-  transition: opacity 0.5s ease-in;
-}
-.month-iteration.month-iteration-active {
-  opacity: 1;
 }

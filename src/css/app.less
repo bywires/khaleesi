@@ -12,6 +12,7 @@
       position: absolute;
       top: 6px;
       cursor: pointer;
+      .user-select(none);
     }
 
     .previous-button {
@@ -33,6 +34,7 @@
   }
 
   .month-label {
+    .user-select(none);
     font: @month-label-font;
     color: @month-label-font-color;
     text-align: center;
@@ -58,6 +60,7 @@
     background: @day-label-color;
     font: @day-label-font;
     color: @day-label-font-color;
+    .user-select(none);
     .day-base;
   }
 
@@ -65,6 +68,7 @@
     background: @day-default-color;
     font: @day-font;
     color: @day-font-color;
+    .user-select(none);
     .day-base;
 
     &.hover {
@@ -83,13 +87,4 @@
       background: @day-departure-color;
     }
   }
-}
-
-.month-iteration {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
-}
-
-.month-iteration.month-iteration-active {
-  opacity: 1;
 }
