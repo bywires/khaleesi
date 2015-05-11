@@ -13,9 +13,9 @@ class Store extends EventEmitter {
                 startMonth: null,
                 monthCount: 1,
                 dayHover: null,
+                selected: [],
                 arrival: null,
-                departure: null,
-                next: 'arrival'
+                departure: null
             },
             options
         );
@@ -31,16 +31,21 @@ class Store extends EventEmitter {
     }
 
     select(data) {
-        if (this.next == 'arrival') {
-            this.arrival = data;
-            this.departure = null;
-            this.next = 'departure';
+        if (this.selected.length < 2) {
+            this.selected.push(data);
+            this.selected.sort();
         } else {
-            this.departure = data;
-            this.next = 'arrival';
+            this.selected = [data];
         }
 
+        this.arrival = this.selected[0] || null;
+        this.departure = this.selected[1] || null;
+
         this.emit('change');
+    }
+
+    getSelected() {
+        return this.selected;
     }
 
     getArrival() {

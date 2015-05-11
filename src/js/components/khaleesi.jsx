@@ -43,7 +43,8 @@ module.exports = React.createClass({
         var date = utils.firstDayOfFirstWeekOfMonth(year, month),
             hover = this.props.store.getDayHover(),
             arrival = this.props.store.getArrival(),
-            departure = this.props.store.getDeparture();
+            departure = this.props.store.getDeparture(),
+            [low, high] = this.props.store.getSelected().concat([hover]).slice(0, 2).sort();
 
         // always show 6 weeks (42 days) even if month is less
         var days = utils.range(42).map(i => {
@@ -56,7 +57,7 @@ module.exports = React.createClass({
                     hover: hover == id,
                     arrival: arrival == id,
                     departure: departure == id,
-                    selected: arrival && (arrival < id && (departure || hover) > id)
+                    selected: low && (low < id && high > id)
                 };
 
             date.setDate(date.getDate() + 1);

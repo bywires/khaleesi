@@ -112,7 +112,8 @@
 	        var date = utils.firstDayOfFirstWeekOfMonth(year, month),
 	            hover = this.props.store.getDayHover(),
 	            arrival = this.props.store.getArrival(),
-	            departure = this.props.store.getDeparture();
+	            departure = this.props.store.getDeparture(),
+	            $__1=   this.props.store.getSelected().concat([hover]).slice(0, 2).sort(),low=$__1[0],high=$__1[1];
 
 	        // always show 6 weeks (42 days) even if month is less
 	        var days = utils.range(42).map(function(i)  {
@@ -125,7 +126,7 @@
 	                    hover: hover == id,
 	                    arrival: arrival == id,
 	                    departure: departure == id,
-	                    selected: arrival && (arrival < id && (departure || hover) > id)
+	                    selected: low && (low < id && high > id)
 	                };
 
 	            date.setDate(date.getDate() + 1);
@@ -160,9 +161,9 @@
 	                startMonth: null,
 	                monthCount: 1,
 	                dayHover: null,
+	                selected: [],
 	                arrival: null,
-	                departure: null,
-	                next: 'arrival'
+	                departure: null
 	            },
 	            options
 	        );
@@ -178,16 +179,21 @@
 	    }});
 
 	    Object.defineProperty(Store.prototype,"select",{writable:true,configurable:true,value:function(data) {
-	        if (this.next == 'arrival') {
-	            this.arrival = data;
-	            this.departure = null;
-	            this.next = 'departure';
+	        if (this.selected.length < 2) {
+	            this.selected.push(data);
+	            this.selected.sort();
 	        } else {
-	            this.departure = data;
-	            this.next = 'arrival';
+	            this.selected = [data];
 	        }
 
+	        this.arrival = this.selected[0] || null;
+	        this.departure = this.selected[1] || null;
+
 	        this.emit('change');
+	    }});
+
+	    Object.defineProperty(Store.prototype,"getSelected",{writable:true,configurable:true,value:function() {
+	        return this.selected;
 	    }});
 
 	    Object.defineProperty(Store.prototype,"getArrival",{writable:true,configurable:true,value:function() {
