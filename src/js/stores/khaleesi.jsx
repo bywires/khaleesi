@@ -45,7 +45,7 @@ class Store extends EventEmitter {
     }
 
     getSelected() {
-        return this.selected;
+        return this.selected.concat([this.dayHover]).slice(0, 2).sort();
     }
 
     getArrival() {

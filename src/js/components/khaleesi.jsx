@@ -44,7 +44,7 @@ module.exports = React.createClass({
             hover = this.props.store.getDayHover(),
             arrival = this.props.store.getArrival(),
             departure = this.props.store.getDeparture(),
-            [low, high] = this.props.store.getSelected().concat([hover]).slice(0, 2).sort();
+            [low, high] = this.props.store.getSelected();
 
         // always show 6 weeks (42 days) even if month is less
         var days = utils.range(42).map(i => {

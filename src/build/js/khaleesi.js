@@ -113,7 +113,7 @@
 	            hover = this.props.store.getDayHover(),
 	            arrival = this.props.store.getArrival(),
 	            departure = this.props.store.getDeparture(),
-	            $__1=   this.props.store.getSelected().concat([hover]).slice(0, 2).sort(),low=$__1[0],high=$__1[1];
+	            $__1=   this.props.store.getSelected(),low=$__1[0],high=$__1[1];
 
 	        // always show 6 weeks (42 days) even if month is less
 	        var days = utils.range(42).map(function(i)  {
@@ -193,7 +193,7 @@
 	    }});
 
 	    Object.defineProperty(Store.prototype,"getSelected",{writable:true,configurable:true,value:function() {
-	        return this.selected;
+	        return this.selected.concat([this.dayHover]).slice(0, 2).sort();
 	    }});
 
 	    Object.defineProperty(Store.prototype,"getArrival",{writable:true,configurable:true,value:function() {
