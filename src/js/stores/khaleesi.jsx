@@ -1,5 +1,8 @@
+'use strict';
+
 var EventEmitter = require('events').EventEmitter,
-    assign = require('object-assign');
+    assign = require('object-assign'),
+    utils = require('utils');
 
 class Store extends EventEmitter {
     constructor(options) {
@@ -46,6 +49,21 @@ class Store extends EventEmitter {
 
     getDeparture() {
         return this.departure;
+    }
+
+    nextPage() {
+        this.movePage(this.monthCount);
+    }
+
+    previousPage() {
+        this.movePage(this.monthCount * -1);
+    }
+
+    movePage(months) {
+        let [year, month] = utils.normalizeYearMonth(this.startYear, this.startMonth + months);
+        this.startYear = year;
+        this.startMonth = month;
+        this.emit('change');
     }
 }
 

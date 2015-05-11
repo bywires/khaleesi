@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react'),
     Day = require('components/day.jsx');
 
@@ -11,7 +13,7 @@ module.exports = React.createClass({
         return (
             <div className='month'>
                 <div className='month-label'>
-                    {monthNames[this.props.month]}
+                    {monthNames[this.props.month]} {this.props.year}
                 </div>
                 <div className='day-labels'>
                     {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(day => <div className='day-label'>{day}</div>)}

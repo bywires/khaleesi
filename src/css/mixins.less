@@ -32,3 +32,25 @@
     }
   }
 }
+
+.arrow-right(@width, @height, @color) {
+  width: 0;
+  height: 0;
+  border-top: @height/2 solid transparent;
+  border-bottom: @height/2 solid transparent;
+  border-left: @width solid @color;
+}
+
+.arrow-left(@width, @height, @color) {
+  width: 0;
+  height: 0;
+  border-top: @height/2 solid transparent;
+  border-bottom: @height/2 solid transparent;
+  border-right: @width solid @color;
+}
+
+.transition(@transition) {
+  -webkit-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}

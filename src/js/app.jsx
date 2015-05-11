@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react'),
     Khaleesi = require('components/khaleesi.jsx'),
     Store = require('stores/khaleesi');

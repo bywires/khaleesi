@@ -1,5 +1,8 @@
+'use strict';
+
 var React = require('react'),
-    Months = require('components/months.jsx');
+    Calendar = require('components/calendar.jsx'),
+    utils = require('utils');
 
 module.exports = React.createClass({
     getInitialState() {
@@ -21,13 +24,13 @@ module.exports = React.createClass({
     render() {
         return (
             <div className="khaleesi">
-                <Months months={this.buildMonthsState()} store={this.props.store} />
+                <Calendar months={this.buildMonthsState()} store={this.props.store} />
             </div>
         );
     },
 
     buildMonthsState() {
-        return range(this.state.monthCount)
+        return utils.range(this.state.monthCount)
             .map(offset => this.buildMonthState(
                 this.state.startYear,
                 this.state.startMonth + offset
@@ -35,18 +38,18 @@ module.exports = React.createClass({
     },
 
     buildMonthState(year, month) {
-        var date = this.firstDayOfFirstWeekOfMonth(year, month),
+        [year, month] = utils.normalizeYearMonth(year, month);
+
+        var date = utils.firstDayOfFirstWeekOfMonth(year, month),
             hover = this.props.store.getDayHover(),
             arrival = this.props.store.getArrival(),
             departure = this.props.store.getDeparture();
 
         // always show 6 weeks (42 days) even if month is less
-        var days = range(42).map(i => {
-            var day = date.getMonth() == month ? date.getDate() : null,
+        var days = utils.range(42).map(i => {
+            let day = date.getMonth() == month ? date.getDate() : null,
                 id = date.getMonth() == month ? date.toISOString().substring(0, 10) : 'disabled',
                 props = {
-                    year: year,
-                    month: month,
                     day: day,
                     id: id,
                     enabled: date.getMonth() == month,
@@ -66,24 +69,5 @@ module.exports = React.createClass({
             month: month,
             days: days
         };
-    },
-
-    firstDayOfFirstWeekOfMonth(year, month) {
-        return new Date(year, month, 1 - new Date(year, month, 1).getDay());
     }
 });
-
-function range(a, b) {
-    if (b === undefined) {
-        b = a;
-        a = 0;
-    }
-
-    var i, result = [];
-
-    for(i=a; i<b; i++) {
-        result.push(i);
-    }
-
-    return result;
-}

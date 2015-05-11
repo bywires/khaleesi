@@ -13,6 +13,36 @@
   float: left;
   background: white;
 }
+.khaleesi .month-nav {
+  position: relative;
+}
+.khaleesi .month-nav .btn-base {
+  position: absolute;
+  top: 6px;
+  cursor: pointer;
+}
+.khaleesi .month-nav .previous-button {
+  position: absolute;
+  top: 6px;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 10px solid black;
+  left: 5px;
+}
+.khaleesi .month-nav .next-button {
+  position: absolute;
+  top: 6px;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid black;
+  right: 5px;
+}
 .khaleesi .months {
   zoom: 1;
   padding: 5px;
@@ -130,4 +160,11 @@
 }
 .khaleesi .day.departure {
   background: gold;
+}
+.month-iteration {
+  opacity: 0.01;
+  transition: opacity 0.5s ease-in;
+}
+.month-iteration.month-iteration-active {
+  opacity: 1;
 }

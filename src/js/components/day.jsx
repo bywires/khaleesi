@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react'),
     cx = require('react/lib/cx');
 

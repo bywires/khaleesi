@@ -5,6 +5,28 @@
   float: left;
   background: @panel-background;
 
+  .month-nav {
+    position: relative;
+
+    .btn-base {
+      position: absolute;
+      top: 6px;
+      cursor: pointer;
+    }
+
+    .previous-button {
+      .btn-base;
+      .arrow-left(@nav-button-width, @nav-button-height, @nav-button-color);
+      left: @months-padding;
+    }
+
+    .next-button {
+      .btn-base;
+      .arrow-right(@nav-button-width, @nav-button-height, @nav-button-color);
+      right: @months-padding;
+    }
+  }
+
   .months {
     .table(@months-per-row, @month-horizontal-spacing, @month-vertical-spacing);
     padding: @months-padding;
@@ -61,4 +83,13 @@
       background: @day-departure-color;
     }
   }
+}
+
+.month-iteration {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.month-iteration.month-iteration-active {
+  opacity: 1;
 }
