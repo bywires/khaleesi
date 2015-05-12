@@ -44,6 +44,13 @@ class Store extends EventEmitter {
         this.emit('change');
     }
 
+    unselect() {
+        this.selected = [];
+        this.arrival = null;
+        this.departure = null;
+        this.emit('change');
+    }
+
     getSelected() {
         return this.selected.concat([this.dayHover]).slice(0, 2).sort();
     }

@@ -48,16 +48,16 @@ module.exports = React.createClass({
 
         // always show 6 weeks (42 days) even if month is less
         var days = utils.range(42).map(i => {
-            let day = date.getMonth() == month ? date.getDate() : null,
-                id = date.getMonth() == month ? date.toISOString().substring(0, 10) : 'disabled',
+            let isInMonth = date.getMonth() == month,
+                day =  isInMonth ? date.getDate() : null,
+                id = isInMonth ? date.toISOString().substring(0, 10) : 'disabled',
                 props = {
                     day: day,
                     id: id,
-                    enabled: date.getMonth() == month,
-                    hover: hover == id,
-                    arrival: arrival == id,
-                    departure: departure == id,
-                    selected: low && (low < id && high > id)
+                    enabled: isInMonth,
+                    arrival: low == id,
+                    departure: high == id,
+                    selected: low && high && (low < id && high > id)
                 };
 
             date.setDate(date.getDate() + 1);

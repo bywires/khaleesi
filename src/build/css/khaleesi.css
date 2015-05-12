@@ -161,9 +161,11 @@
   text-align: center;
 }
 .khaleesi .day {
+  position: relative;
   background: lightgray;
   font: 10px arial, sans-serif;
   color: black;
+  cursor: pointer;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -173,15 +175,35 @@
   line-height: 20px;
   text-align: center;
 }
-.khaleesi .day.hover {
-  background: lightyellow;
-}
 .khaleesi .day.selected {
   background: yellow;
 }
-.khaleesi .day.arrival {
-  background: gold;
+.khaleesi .day .number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
 }
-.khaleesi .day.departure {
-  background: gold;
+.khaleesi .day .decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+.khaleesi .day.arrival:not(.departure) .decoration {
+  border-style: solid;
+  border-width: 0 0 20px 20px;
+  border-color: transparent transparent yellow transparent;
+}
+.khaleesi .day.departure:not(.arrival) .decoration {
+  border-style: solid;
+  border-width: 20px 20px 0 0;
+  border-color: yellow transparent transparent transparent;
+}
+.khaleesi .day.arrival.departure .decoration {
+  width: 20px;
+  height: 20px;
+  background: yellow;
 }

@@ -65,26 +65,50 @@
   }
 
   .day {
+    position: relative;
     background: @day-default-color;
     font: @day-font;
     color: @day-font-color;
+    cursor: pointer;
     .user-select(none);
     .day-base;
-
-    &.hover {
-      background: @day-hover-color;
-    }
 
     &.selected {
       background: @day-selected-color;
     }
 
-    &.arrival {
-      background: @day-arrival-color;
+    .number {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: @day-width;
+      height: @day-height;
     }
 
-    &.departure {
-      background: @day-departure-color;
+    .decoration {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+    }
+
+    &.arrival:not(.departure) .decoration {
+      border-style: solid;
+      border-width: 0 0 @day-height @day-width;
+      border-color: transparent transparent @day-selected-color transparent;
+    }
+
+    &.departure:not(.arrival) .decoration {
+      border-style: solid;
+      border-width: @day-height @day-width 0 0;
+      border-color: @day-selected-color transparent transparent transparent;
+    }
+
+    &.arrival.departure .decoration {
+      width: @day-width;
+      height: @day-height;
+      background: @day-selected-color;
     }
   }
 }

@@ -117,16 +117,16 @@
 
 	        // always show 6 weeks (42 days) even if month is less
 	        var days = utils.range(42).map(function(i)  {
-	            let day = date.getMonth() == month ? date.getDate() : null,
-	                id = date.getMonth() == month ? date.toISOString().substring(0, 10) : 'disabled',
+	            let isInMonth = date.getMonth() == month,
+	                day =  isInMonth ? date.getDate() : null,
+	                id = isInMonth ? date.toISOString().substring(0, 10) : 'disabled',
 	                props = {
 	                    day: day,
 	                    id: id,
-	                    enabled: date.getMonth() == month,
-	                    hover: hover == id,
-	                    arrival: arrival == id,
-	                    departure: departure == id,
-	                    selected: low && (low < id && high > id)
+	                    enabled: isInMonth,
+	                    arrival: low == id,
+	                    departure: high == id,
+	                    selected: low && high && (low < id && high > id)
 	                };
 
 	            date.setDate(date.getDate() + 1);
@@ -189,6 +189,13 @@
 	        this.arrival = this.selected[0] || null;
 	        this.departure = this.selected[1] || null;
 
+	        this.emit('change');
+	    }});
+
+	    Object.defineProperty(Store.prototype,"unselect",{writable:true,configurable:true,value:function() {
+	        this.selected = [];
+	        this.arrival = null;
+	        this.departure = null;
 	        this.emit('change');
 	    }});
 
@@ -5821,7 +5828,6 @@
 	            React.createElement("div", {
 	                className: cx({
 	                    day: true,
-	                    hover: this.props.day.hover,
 	                    arrival: this.props.day.arrival,
 	                    departure: this.props.day.departure,
 	                    selected: this.props.day.selected
@@ -5829,8 +5835,10 @@
 	                onMouseOver: this.dayOver, 
 	                onMouseOut: this.dayOut, 
 	                onClick: this.click}, 
-	                this.props.day.day || ""
+	                React.createElement("div", {className: "decoration"}), 
+	                React.createElement("div", {className: "number"}, this.props.day.day || "")
 	            )
+
 	        );
 	    },
 
@@ -5851,7 +5859,11 @@
 	    },
 
 	    click:function() {
-	        this.props.store.select(this.props.day.id);
+	        if (this.props.day.enabled) {
+	            this.props.store.select(this.props.day.id);
+	        } else {
+	            this.props.store.unselect();
+	        }
 	    }
 	});
 

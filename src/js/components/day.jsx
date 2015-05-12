@@ -9,7 +9,6 @@ module.exports = React.createClass({
             <div
                 className={cx({
                     day: true,
-                    hover: this.props.day.hover,
                     arrival: this.props.day.arrival,
                     departure: this.props.day.departure,
                     selected: this.props.day.selected
@@ -17,8 +16,10 @@ module.exports = React.createClass({
                 onMouseOver={this.dayOver}
                 onMouseOut={this.dayOut}
                 onClick={this.click}>
-                {this.props.day.day || ""}
+                <div className="decoration"></div>
+                <div className="number">{this.props.day.day || ""}</div>
             </div>
+
         );
     },
 
@@ -39,6 +40,10 @@ module.exports = React.createClass({
     },
 
     click() {
-        this.props.store.select(this.props.day.id);
+        if (this.props.day.enabled) {
+            this.props.store.select(this.props.day.id);
+        } else {
+            this.props.store.unselect();
+        }
     }
 });
