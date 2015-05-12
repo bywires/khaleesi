@@ -113,7 +113,7 @@
 	            $__1=   this.props.store.getSelected(),low=$__1[0],high=$__1[1];
 
 	        // always show 6 weeks (42 days) even if month is less
-	        var days = utils.range(42).map(function(i)  {
+	        var days = utils.range(42).map(function()  {
 	            let isInMonth = date.getMonth() == month,
 	                day =  isInMonth ? date.getDate() : null,
 	                id = isInMonth ? date.toISOString().substring(0, 10) : 'disabled',

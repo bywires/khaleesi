@@ -44,7 +44,7 @@ module.exports = React.createClass({
             [low, high] = this.props.store.getSelected();
 
         // always show 6 weeks (42 days) even if month is less
-        var days = utils.range(42).map(i => {
+        var days = utils.range(42).map(() => {
             let isInMonth = date.getMonth() == month,
                 day =  isInMonth ? date.getDate() : null,
                 id = isInMonth ? date.toISOString().substring(0, 10) : 'disabled',
