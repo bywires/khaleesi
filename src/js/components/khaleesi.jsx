@@ -41,9 +41,6 @@ module.exports = React.createClass({
         [year, month] = utils.normalizeYearMonth(year, month);
 
         var date = utils.firstDayOfFirstWeekOfMonth(year, month),
-            hover = this.props.store.getDayHover(),
-            arrival = this.props.store.getArrival(),
-            departure = this.props.store.getDeparture(),
             [low, high] = this.props.store.getSelected();
 
         // always show 6 weeks (42 days) even if month is less

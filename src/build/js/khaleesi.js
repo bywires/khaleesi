@@ -110,9 +110,6 @@
 	        var $__0=   utils.normalizeYearMonth(year, month);year=$__0[0],month=$__0[1];
 
 	        var date = utils.firstDayOfFirstWeekOfMonth(year, month),
-	            hover = this.props.store.getDayHover(),
-	            arrival = this.props.store.getArrival(),
-	            departure = this.props.store.getDeparture(),
 	            $__1=   this.props.store.getSelected(),low=$__1[0],high=$__1[1];
 
 	        // always show 6 weeks (42 days) even if month is less
