@@ -22,9 +22,11 @@ module.exports = React.createClass({
     },
 
     render() {
+        var id = utils.idFromDate(this.props.store.startYear, this.props.store.startMonth);
+
         return (
             <div className="khaleesi">
-                <Calendar months={this.buildMonthsState()} store={this.props.store} />
+                <Calendar id={id} months={this.buildMonthsState()} store={this.props.store} />
             </div>
         );
     },
@@ -47,7 +49,7 @@ module.exports = React.createClass({
         var days = utils.range(42).map(() => {
             let isInMonth = date.getMonth() == month,
                 day =  isInMonth ? date.getDate() : null,
-                id = isInMonth ? date.toISOString().substring(0, 10) : 'disabled',
+                id = isInMonth ? utils.idFromDate(year, month, day) : 'disabled',
                 props = {
                     day: day,
                     id: id,

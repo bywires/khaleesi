@@ -91,9 +91,11 @@
 	    },
 
 	    render:function() {
+	        var id = utils.idFromDate(this.props.store.startYear, this.props.store.startMonth);
+
 	        return (
 	            React.createElement("div", {className: "khaleesi"}, 
-	                React.createElement(Calendar, {months: this.buildMonthsState(), store: this.props.store})
+	                React.createElement(Calendar, {id: id, months: this.buildMonthsState(), store: this.props.store})
 	            )
 	        );
 	    },
@@ -116,7 +118,7 @@
 	        var days = utils.range(42).map(function()  {
 	            let isInMonth = date.getMonth() == month,
 	                day =  isInMonth ? date.getDate() : null,
-	                id = isInMonth ? date.toISOString().substring(0, 10) : 'disabled',
+	                id = isInMonth ? utils.idFromDate(year, month, day) : 'disabled',
 	                props = {
 	                    day: day,
 	                    id: id,
@@ -21092,14 +21094,15 @@
 	                    React.createElement("i", {className: "previous-button", onClick: this.previous}), 
 	                    React.createElement("i", {className: "next-button", onClick: this.next})
 	                ), 
-	                React.createElement("div", {className: "months"}, 
-	                    this.props.months.map(function(month) 
-	                            {return React.createElement(Month, {
-	                                key: month.year + "" + month.month, 
-	                                store: this.props.store, 
-	                                year: month.year, 
-	                                month: month.month, 
-	                                days: month.days});}.bind(this)
+	                React.createElement(ReactCSSTransitionGroup, {transitionName: "month-iteration"}, 
+	                    React.createElement("div", {className: "months", key: this.props.id}, 
+	                        this.props.months.map(function(month) 
+	                                {return React.createElement(Month, {
+	                                    store: this.props.store, 
+	                                    year: month.year, 
+	                                    month: month.month, 
+	                                    days: month.days});}.bind(this)
+	                        )
 	                    )
 	                )
 	            )
@@ -22156,6 +22159,12 @@
 
 	    firstDayOfFirstWeekOfMonth:function(year, month) {
 	        return new Date(year, month, 1 - new Date(year, month, 1).getDay());
+	    },
+
+	    idFromDate:function() {
+	        var length = [0, 4, 7, 10][arguments.length],
+	            date = new Date(arguments[0] || 0, arguments[1] || 0, arguments[2] || 1);
+	        return date.toISOString().substring(0, length);
 	    }
 	};
 

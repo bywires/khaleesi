@@ -13,6 +13,26 @@
   float: left;
   background: white;
 }
+.khaleesi .calendar {
+  position: relative;
+  background: white;
+  overflow: hidden;
+}
+.khaleesi .calendar .month-iteration-enter {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+.khaleesi .calendar .month-iteration-enter.month-iteration-enter-active {
+  opacity: 1;
+}
+.khaleesi .calendar .month-iteration-leave {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+.khaleesi .calendar .month-iteration-leave.month-iteration-leave-active {
+  opacity: 0;
+}
 .khaleesi .month-nav {
   position: relative;
 }

@@ -5,6 +5,31 @@
   float: left;
   background: @panel-background;
 
+  .calendar {
+    position: relative;
+    background: @panel-background;
+    overflow: hidden;
+
+    .month-iteration-enter {
+      position: absolute;
+      opacity: 0;
+      transition: opacity .5s ease-in;
+    }
+
+    .month-iteration-enter.month-iteration-enter-active {
+      opacity: 1;
+    }
+
+    .month-iteration-leave {
+      opacity: 1;
+      transition: opacity .5s ease-in;
+    }
+
+    .month-iteration-leave.month-iteration-leave-active {
+      opacity: 0;
+    }
+  }
+
   .month-nav {
     position: relative;
 
