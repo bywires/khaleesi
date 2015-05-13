@@ -2,7 +2,7 @@
 
 var React = require('react'),
     ReactCSSTransitionGroup = require('react/lib/ReactCSSTransitionGroup'),
-    Month = require('components/month.jsx');
+    Month = require('components/month');
 
 module.exports = React.createClass({
     previous() {

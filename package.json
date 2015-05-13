@@ -4,21 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack --progress --colors --watch"
   },
   "author": "Bob McKee <bmckee@bywires.com>",
   "license": "ISC",
   "dependencies": {
-    "jsx-loader": "^0.13.2",
-    "keymirror": "^0.1.1",
     "object-assign": "^2.0.0",
     "react": "^0.13.3"
   },
   "devDependencies": {
     "css-loader": "^0.12.0",
     "extract-text-webpack-plugin": "^0.7.1",
+    "jsx-loader": "^0.13.2",
     "less": "^2.5.0",
     "less-loader": "^2.2.0",
     "style-loader": "^0.12.2",

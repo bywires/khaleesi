@@ -9,6 +9,7 @@ module.exports = React.createClass({
             <div
                 className={cx({
                     day: true,
+                    hover: this.props.day.hover,
                     arrival: this.props.day.arrival,
                     departure: this.props.day.departure,
                     selected: this.props.day.selected
@@ -36,7 +37,7 @@ module.exports = React.createClass({
             return;
         }
 
-        this.props.store.setDayHover(data);
+        this.props.store.setHover(data);
     },
 
     click() {

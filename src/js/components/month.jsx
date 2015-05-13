@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react'),
-    Day = require('components/day.jsx');
+    Day = require('components/day');
 
 var monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',

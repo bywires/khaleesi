@@ -16,7 +16,7 @@ module.exports = {
     },
 
     resolve: {
-        modulesDirectories: ['node_modules', 'src/js', 'src/css'],
+        modulesDirectories: ['node_modules', 'src/js', 'src/css', 'test/js'],
         extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
     },
 
@@ -25,7 +25,7 @@ module.exports = {
     },
 
     output: {
-        path: './src/build',
+        path: './build',
         filename: 'js/[name].js',
         sourceMapFilename: 'js/[name].map'
     },

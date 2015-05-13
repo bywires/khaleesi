@@ -12,7 +12,7 @@ class Store extends EventEmitter {
                 startYear: null,
                 startMonth: null,
                 monthCount: 1,
-                dayHover: null,
+                hover: null,
                 selected: [],
                 arrival: null,
                 departure: null
@@ -21,24 +21,50 @@ class Store extends EventEmitter {
         );
     }
 
-    setDayHover(data) {
-        this.dayHover = data;
+    setHover(data) {
+        this.hover = data;
         this.emit('change');
     }
 
-    getDayHover() {
-        return this.dayHover;
+    getHover() {
+        // nothing is selected, hover is low/arrival
+        if (this.selected.length == 0) {
+            return this.hover;
+        }
+        // one day is already selected, hover is part of selection
+        else if (this.selected.length == 1) {
+            return null;
+        }
+        // two days are selected and hover is between them (inclusive), hover nothing
+        else if (this.hover > this.selected[0] && this.hover < this.selected[1]) {
+            return null;
+        }
+        // two days are selected, treat hover as potential new arrival date
+        else {
+            return this.hover;
+        }
     }
 
     select(data) {
-        if (this.selected.length < 2) {
+        // arrival and departure cannot be the same day
+        if (this.selected == [data]) {
+            return;
+        }
+        // combine new date with old and sort
+        else if (this.selected.length == 1) {
             this.selected.push(data);
             this.selected.sort();
-        } else {
+        }
+        // two days selected and date is later than high date, expand selection
+        else if (this.selected.length == 2 && data > this.selected[1]) {
+            this.selected[1] = data;
+        }
+        // start new selection
+        else {
             this.selected = [data];
         }
 
-        this.arrival = this.selected[0] || null;
+        this.arrival = this.selected[0];
         this.departure = this.selected[1] || null;
 
         this.emit('change');
@@ -52,7 +78,22 @@ class Store extends EventEmitter {
     }
 
     getSelected() {
-        return this.selected.concat([this.dayHover]).slice(0, 2).sort();
+        // zero days selected
+        if (this.selected.length == 0) {
+            return [null, null];
+        }
+        // two days selected
+        else if (this.selected.length == 2) {
+            return this.selected;
+        }
+        // one date selected and we're hovering that date, show the selected as low and ignore hover
+        if (this.selected[0] == this.hover) {
+            return [this.selected[0], null];
+        }
+        // one date is selected and we're hover a different date, create selection from both
+        else {
+            return this.selected.concat([this.hover]).sort()
+        }
     }
 
     getArrival() {
@@ -61,6 +102,10 @@ class Store extends EventEmitter {
 
     getDeparture() {
         return this.departure;
+    }
+
+    getComputedState() {
+
     }
 
     nextPage() {
