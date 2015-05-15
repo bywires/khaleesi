@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 import assign from 'object-assign';
-import utils from 'utils';
+import { normalizeYearMonth } from 'utils';
 
 export default class Store extends EventEmitter {
     constructor(options) {
@@ -125,7 +125,7 @@ export default class Store extends EventEmitter {
     }
 
     movePage(months) {
-        let [year, month] = utils.normalizeYearMonth(this.startYear, this.startMonth + months);
+        let [year, month] = normalizeYearMonth(this.startYear, this.startMonth + months);
         this.startYear = year;
         this.startMonth = month;
         this.emit('change');
