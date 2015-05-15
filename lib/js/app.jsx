@@ -1,10 +1,6 @@
-'use strict';
-
-var React = require('react'),
-    Khaleesi = require('components/khaleesi'),
-    Store = require('stores/khaleesi');
-
-require("app.less");
+import React from 'react';
+import Khaleesi from 'components/khaleesi';
+import Store from 'stores/khaleesi';
 
 var store = new Store({
     startYear: 2015,

@@ -1,14 +1,12 @@
-'use strict';
-
-var React = require('react'),
-    Day = require('components/day');
+import React from 'react';
+import Day from 'components/day';
 
 var monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-module.exports = React.createClass({
+export default React.createClass({
     render() {
         return (
             <div className='month'>

@@ -1,10 +1,8 @@
-'use strict';
+import React from 'react';
+import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
+import Month from 'components/month';
 
-var React = require('react'),
-    ReactCSSTransitionGroup = require('react/lib/ReactCSSTransitionGroup'),
-    Month = require('components/month');
-
-module.exports = React.createClass({
+export default React.createClass({
     previous() {
         this.props.store.previousPage();
     },

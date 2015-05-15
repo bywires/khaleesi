@@ -1,18 +1,17 @@
-'use strict';
+import React from 'react';
+import cx from 'react/lib/cx';
 
-var React = require('react'),
-    cx = require('react/lib/cx');
-
-module.exports = React.createClass({
+export default React.createClass({
     render() {
         return (
             <div
                 className={cx({
                     day: true,
-                    hover: this.props.day.hover,
                     arrival: this.props.day.arrival,
                     departure: this.props.day.departure,
-                    selected: this.props.day.selected
+                    selected: this.props.day.selected,
+                    'arrival-hover': this.props.day.arrivalHover,
+                    'departure-hover': this.props.day.departureHover
                 })}
                 onMouseOver={this.dayOver}
                 onMouseOut={this.dayOut}
@@ -37,7 +36,7 @@ module.exports = React.createClass({
             return;
         }
 
-        this.props.store.setHover(data);
+        this.props.store.hover(data);
     },
 
     click() {

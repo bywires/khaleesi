@@ -1,10 +1,8 @@
-'use strict';
+import React from 'react';
+import Calendar from 'components/calendar';
+import { range, idFromDate, normalizeYearMonth, firstDayOfFirstWeekOfMonth } from 'utils';
 
-var React = require('react'),
-    Calendar = require('components/calendar'),
-    utils = require('utils');
-
-module.exports = React.createClass({
+export default React.createClass({
     getInitialState() {
         return this.props.store;
     },
@@ -22,7 +20,7 @@ module.exports = React.createClass({
     },
 
     render() {
-        var id = utils.idFromDate(this.props.store.startYear, this.props.store.startMonth);
+        var id = idFromDate(this.props.store.startYear, this.props.store.startMonth);
 
         return (
             <div className="khaleesi">
@@ -32,7 +30,7 @@ module.exports = React.createClass({
     },
 
     buildMonthsState() {
-        return utils.range(this.state.monthCount)
+        return range(this.state.monthCount)
             .map(offset => this.buildMonthState(
                 this.state.startYear,
                 this.state.startMonth + offset
@@ -40,25 +38,25 @@ module.exports = React.createClass({
     },
 
     buildMonthState(year, month) {
-        [year, month] = utils.normalizeYearMonth(year, month);
+        [year, month] = normalizeYearMonth(year, month);
 
-        var date = utils.firstDayOfFirstWeekOfMonth(year, month),
-            hover = this.props.store.getHover(),
-            [low, high] = this.props.store.getSelected();
+        var date = firstDayOfFirstWeekOfMonth(year, month),
+            state = this.props.store;
 
         // always show 6 weeks (42 days) even if month is less
-        var days = utils.range(42).map(() => {
+        var days = range(42).map(() => {
             let isInMonth = date.getMonth() == month,
                 day =  isInMonth ? date.getDate() : null,
-                id = isInMonth ? utils.idFromDate(year, month, day) : 'disabled',
+                id = isInMonth ? idFromDate(year, month, day) : 'disabled',
                 props = {
                     day: day,
                     id: id,
                     enabled: isInMonth,
-                    hover: hover == id,
-                    arrival: low == id,
-                    departure: high == id,
-                    selected: low && high && (low < id && high > id)
+                    arrival: state.isArrival(id),
+                    departure: state.isDeparture(id),
+                    arrivalHover: state.isArrivalHover(id),
+                    departureHover: state.isDepartureHover(id),
+                    selected: state.isSelected(id)
                 };
 
             date.setDate(date.getDate() + 1);

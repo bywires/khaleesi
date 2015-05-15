@@ -6,7 +6,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.jsx$/,
-                loader: 'jsx-loader?harmony=true'
+                loader: 'babel-loader',
+                exclude: /node_modules/
             },
             {
                 test: /\.less$/,
@@ -16,21 +17,29 @@ module.exports = {
     },
 
     resolve: {
-        modulesDirectories: ['node_modules', 'src/js', 'src/css', 'test/js'],
+        modulesDirectories: ['node_modules', 'lib/js', 'lib/css', 'spec'],
         extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
     },
 
     entry: {
-        khaleesi: './src/js/app.jsx'
+        khaleesi: ['./lib/js/app.jsx', './lib/css/app.less'],
+        spec: './spec/app_spec.jsx'
     },
 
     output: {
-        path: './build',
-        filename: 'js/[name].js',
-        sourceMapFilename: 'js/[name].map'
+        path: './dist',
+        filename: '[name].min.js',
+        sourceMapFilename: '[file].map'
     },
 
     plugins: [
-        new ExtractTextPlugin('css/[name].css')
-    ]
+        new ExtractTextPlugin('[name].min.css'),
+        new webpack.optimize.UglifyJsPlugin({
+            output: {
+                comments: false
+            }
+        })
+    ],
+
+    devtool: 'source-map'
 };
