@@ -17,13 +17,12 @@ module.exports = {
     },
 
     resolve: {
-        modulesDirectories: ['node_modules', 'lib/js', 'lib/css', 'spec'],
+        modulesDirectories: ['node_modules', 'lib/js', 'lib/css'],
         extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
     },
 
     entry: {
-        khaleesi: ['./lib/js/app.jsx', './lib/css/app.less'],
-        spec: './spec/app_spec.jsx'
+        khaleesi: ['./lib/js/app.jsx', './lib/css/app.less']
     },
 
     output: {

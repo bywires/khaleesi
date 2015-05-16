@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine",
+    "test": "./node_modules/.bin/jest",
     "build": "./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack --progress --colors --watch"
   },
@@ -16,13 +16,28 @@
   },
   "devDependencies": {
     "babel-core": "^5.4.0",
+    "babel-jest": "^5.2.0",
     "babel-loader": "^5.0.0",
     "css-loader": "^0.12.0",
     "extract-text-webpack-plugin": "^0.7.1",
-    "jasmine": "^2.3.1",
+    "jest-cli": "^0.4.3",
     "less": "^2.5.0",
     "less-loader": "^2.2.0",
     "style-loader": "^0.12.2",
     "webpack": "^1.8.11"
+  },
+  "jest": {
+    "scriptPreprocessor": "./node_modules/babel-jest",
+    "testFileExtensions": [
+      "js",
+      "jsx",
+      "es6"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "es6"
+    ]
   }
 }

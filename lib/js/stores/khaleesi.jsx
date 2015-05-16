@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 import assign from 'object-assign';
-import { normalizeYearMonth } from 'utils';
+import { normalizeYearMonth } from '../utils';
 
 export default class Store extends EventEmitter {
     constructor(options) {

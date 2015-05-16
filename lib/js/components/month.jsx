@@ -1,5 +1,5 @@
 import React from 'react';
-import Day from 'components/day';
+import Day from './day';
 
 var monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',

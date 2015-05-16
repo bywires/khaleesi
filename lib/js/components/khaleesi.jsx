@@ -1,6 +1,6 @@
 import React from 'react';
-import Calendar from 'components/calendar';
-import { range, idFromDate, normalizeYearMonth, firstDayOfFirstWeekOfMonth } from 'utils';
+import Calendar from './calendar';
+import { range, idFromDate, normalizeYearMonth, firstDayOfFirstWeekOfMonth } from '../utils';
 
 export default React.createClass({
     getInitialState() {

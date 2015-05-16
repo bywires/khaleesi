@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
-import Month from 'components/month';
+import Month from './month';
 
 export default React.createClass({
     previous() {
