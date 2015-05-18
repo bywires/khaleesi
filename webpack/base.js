@@ -1,12 +1,13 @@
 var webpack = require('webpack'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    path = require('path');
 
 module.exports = {
     module: {
         loaders: [
             {
                 test: /\.jsx$/,
-                loader: 'babel-loader',
+                loader: 'babel-loader?cacheDirectory',
                 exclude: /node_modules/
             },
             {
@@ -22,22 +23,23 @@ module.exports = {
     },
 
     entry: {
-        khaleesi: ['./lib/js/app.jsx', './lib/css/app.less']
+        khaleesi: ['./lib/js/app.jsx', './lib/css/app.less'],
+        vendor: ['react']
     },
 
     output: {
-        path: './dist',
+        path: path.join(__dirname, '..', 'dist'),
+        publicPath: 'dist/',
         filename: '[name].min.js',
         sourceMapFilename: '[file].map'
     },
 
     plugins: [
         new ExtractTextPlugin('[name].min.css'),
-        new webpack.optimize.UglifyJsPlugin({
-            output: {
-                comments: false
-            }
-        })
+        new webpack.optimize.CommonsChunkPlugin(
+            'vendor',
+            'vendor.min.js'
+        )
     ],
 
     devtool: 'source-map'

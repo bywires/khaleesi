@@ -1,7 +1,4 @@
-jest.autoMockOff();
-jest.dontMock('../khaleesi');
-
-var Store = require('../khaleesi');
+import Store from '../khaleesi';
 
 describe('A Khaleesi store', () => {
     var store;
