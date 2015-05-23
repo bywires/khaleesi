@@ -1,25 +1,40 @@
 import EventEmitter from 'events';
-import assign from 'object-assign';
 import { normalizeYearMonth } from '../utils';
 
 export default class Store extends EventEmitter {
     constructor(options) {
         super();
 
-        assign(
-            this,
-            {
-                startYear: null,
-                startMonth: null,
-                monthCount: 1,
-                selected: [],
-                start: null,
-                end: null,
-                startHover: null,
-                endHover: null
-            },
-            options
-        );
+        options = options || {};
+
+        this.startYear = options.startYear;
+        this.startMonth = options.startMonth;
+        this.monthCount = options.monthCount;
+        this.useRangeSelection = options.useRangeSelection;
+        this.useHalfDays = options.useHalfDays;
+        this.startHover = null;
+        this.endHover = null;
+
+        // used for single selection
+        if (options.selected) {
+            this.start = options.selected;
+            this.end = null;
+            this.selected = [options.selected];
+        }
+        // used for range selection
+        else {
+            this.start = options.start || null;
+            this.end = options.end || null;
+            this.selected = [];
+
+            if (this.start) {
+                this.selected.push(this.start);
+
+                if (this.end) {
+                    this.selected.push(this.end);
+                }
+            }
+        }
     }
 
     hover(id) {

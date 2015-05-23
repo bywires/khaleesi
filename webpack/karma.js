@@ -9,7 +9,7 @@ config.module.loaders = [{
 }];
 
 config.entry = {
-    khaleesi: ['./lib/js/app.jsx']
+    khaleesi: ['./lib/js/components/khaleesi.jsx', './lib/js/stores/khaleesi.jsx']
 };
 
 config.plugins = [];

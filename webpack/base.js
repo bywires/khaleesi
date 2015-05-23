@@ -23,7 +23,8 @@ module.exports = {
     },
 
     entry: {
-        khaleesi: ['./lib/js/app.jsx', './lib/css/app.less'],
+        demo: ['./lib/js/demo.jsx'],
+        khaleesi: ['./lib/js/components/khaleesi.jsx', './lib/js/stores/khaleesi.jsx', './lib/css/app.less'],
         vendor: ['react']
     },
 

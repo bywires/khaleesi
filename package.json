@@ -10,7 +10,6 @@
   "author": "Bob McKee <bmckee@bywires.com>",
   "license": "ISC",
   "dependencies": {
-    "object-assign": "^2.0.0",
     "react": "^0.13.3"
   },
   "devDependencies": {
@@ -31,6 +30,7 @@
     "karma-webpack": "^1.5.1",
     "less": "^2.5.0",
     "less-loader": "^2.2.0",
+    "object-assign": "^2.0.0",
     "run-sequence": "^1.1.0",
     "style-loader": "^0.12.2",
     "webpack": "^1.8.11",
