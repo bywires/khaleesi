@@ -23,6 +23,12 @@ export default class Store extends EventEmitter {
     }
 
     hover(id) {
+        if (!this.useRangeSelection) {
+            this.startHover = id;
+            this.emit('change');
+            return;
+        }
+
         this.startHover = null;
         this.endHover = null;
 
@@ -43,6 +49,13 @@ export default class Store extends EventEmitter {
     }
 
     select(id) {
+        if (!this.useRangeSelection) {
+            this.selected = [id];
+            this.start = id;
+            this.emit('change');
+            return;
+        }
+
         // start and end cannot be the same day
         if (this.selected == [id]) {
             return;
