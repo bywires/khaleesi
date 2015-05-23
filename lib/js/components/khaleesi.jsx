@@ -53,6 +53,7 @@ export default React.createClass({
                 id = isInMonth ? idFromDate(year, month, day) : 'disabled',
                 props = {
                     day: day,
+                    halfDay: state.useHalfDays,
                     id: id,
                     enabled: isInMonth,
                     arrival: state.isArrival(id),

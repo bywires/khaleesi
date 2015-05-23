@@ -5,7 +5,8 @@ import Store from 'stores/khaleesi';
 var store = new Store({
     startYear: 2015,
     startMonth: 5,
-    monthCount: 4
+    monthCount: 4,
+    useHalfDays: false
 });
 
 React.render(

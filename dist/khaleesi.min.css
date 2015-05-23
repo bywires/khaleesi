@@ -1,2 +1,234 @@
-.khaleesi .month-nav .next-button,.khaleesi .month-nav .previous-button{cursor:pointer;top:6px;width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent}.clearfix:after,.khaleesi .months:after{clear:both}.clearfix:after,.clearfix:before,.khaleesi .day-labels:after,.khaleesi .day-labels:before,.khaleesi .months:after,.khaleesi .months:before,.khaleesi .weeks:after,.khaleesi .weeks:before{content:"";display:table}.khaleesi .day,.khaleesi .day-base,.khaleesi .day-label{width:20px;height:20px;text-align:center}.clearfix{zoom:1}.khaleesi{float:left;background:#fff}.khaleesi .calendar{position:relative;background:#fff;overflow:hidden}.khaleesi .calendar .month-iteration-enter{position:absolute;opacity:0;transition:opacity .5s ease-in}.khaleesi .calendar .month-iteration-enter.month-iteration-enter-active{opacity:1}.khaleesi .calendar .month-iteration-leave{opacity:1;transition:opacity .5s ease-in}.khaleesi .calendar .month-iteration-leave.month-iteration-leave-active{opacity:0}.khaleesi .month-nav{position:relative}.khaleesi .month-nav .btn-base{position:absolute;top:6px;cursor:pointer;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none}.khaleesi .month-nav .previous-button{position:absolute;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;border-right:10px solid #000;left:5px}.khaleesi .month-nav .next-button{position:absolute;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;border-left:10px solid #000;right:5px}.khaleesi .months{zoom:1;padding:5px}.khaleesi .months>div{float:left;margin-bottom:5px;margin-right:5px}.khaleesi .months>div:nth-child(2n){margin-right:0}.khaleesi .months>div:nth-child(2n+1){clear:left}.khaleesi .months>div:nth-last-child(-n+2){margin-bottom:0}.khaleesi .month-label{user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;font:14px/20px arial,sans-serif;color:#000;text-align:center}.khaleesi .day-labels{zoom:1;margin-bottom:1px}.khaleesi .day-labels:after{clear:both}.khaleesi .day-labels>div{float:left;margin-bottom:1px;margin-right:1px}.khaleesi .day-labels>div:nth-child(7n){margin-right:0}.khaleesi .day-labels>div:nth-child(7n+1){clear:left}.khaleesi .day-labels>div:nth-last-child(-n+7){margin-bottom:0}.khaleesi .weeks{zoom:1}.khaleesi .weeks:after{clear:both}.khaleesi .weeks>div{float:left;margin-bottom:1px;margin-right:1px}.khaleesi .weeks>div:nth-child(7n){margin-right:0}.khaleesi .weeks>div:nth-child(7n+1){clear:left}.khaleesi .weeks>div:nth-last-child(-n+7){margin-bottom:0}.khaleesi .day-base{line-height:20px}.khaleesi .day-label{background:#708090;font:700 10px arial,sans-serif;color:#fff;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;line-height:20px}.khaleesi .day{position:relative;background:#d3d3d3;font:10px arial,sans-serif;color:#000;cursor:pointer;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;line-height:20px}.khaleesi .day.selected{background:#ff0}.khaleesi .day .number{position:absolute;top:0;left:0;width:20px;height:20px}.khaleesi .day .decoration{position:absolute;top:0;left:0;width:0;height:0}.khaleesi .day.arrival-hover .decoration{border-style:solid;border-width:0 0 20px 20px;border-color:transparent transparent #ffffe0}.khaleesi .day.departure-hover .decoration{border-style:solid;border-width:20px 20px 0 0;border-color:#ffffe0 transparent transparent}.khaleesi .day.arrival:not(.departure) .decoration{border-style:solid;border-width:0 0 20px 20px;border-color:transparent transparent #ff0}.khaleesi .day.departure:not(.arrival) .decoration{border-style:solid;border-width:20px 20px 0 0;border-color:#ff0 transparent transparent}.khaleesi .day.arrival.departure .decoration{width:20px;height:20px;background:#ff0}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.khaleesi {
+  float: left;
+  background: white;
+}
+.khaleesi .calendar {
+  position: relative;
+  background: white;
+  overflow: hidden;
+}
+.khaleesi .month-nav {
+  position: relative;
+}
+.khaleesi .month-nav .btn-base {
+  position: absolute;
+  top: 6px;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.khaleesi .month-nav .previous-button {
+  position: absolute;
+  top: 6px;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 10px solid black;
+  left: 5px;
+}
+.khaleesi .month-nav .next-button {
+  position: absolute;
+  top: 6px;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid black;
+  right: 5px;
+}
+.khaleesi .months {
+  zoom: 1;
+  padding: 5px;
+}
+.khaleesi .months:before,
+.khaleesi .months:after {
+  content: "";
+  display: table;
+}
+.khaleesi .months:after {
+  clear: both;
+}
+.khaleesi .months > div {
+  float: left;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+.khaleesi .months > div:nth-child(2n) {
+  margin-right: 0;
+}
+.khaleesi .months > div:nth-child(2n + 1) {
+  clear: left;
+}
+.khaleesi .months > div:nth-last-child(-n + 2) {
+  margin-bottom: 0;
+}
+.khaleesi .month-label {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  font: 14px / 20px arial, sans-serif;
+  color: black;
+  text-align: center;
+}
+.khaleesi .day-labels {
+  zoom: 1;
+  margin-bottom: 1px;
+}
+.khaleesi .day-labels:before,
+.khaleesi .day-labels:after {
+  content: "";
+  display: table;
+}
+.khaleesi .day-labels:after {
+  clear: both;
+}
+.khaleesi .day-labels > div {
+  float: left;
+  margin-bottom: 1px;
+  margin-right: 1px;
+}
+.khaleesi .day-labels > div:nth-child(7n) {
+  margin-right: 0;
+}
+.khaleesi .day-labels > div:nth-child(7n + 1) {
+  clear: left;
+}
+.khaleesi .day-labels > div:nth-last-child(-n + 7) {
+  margin-bottom: 0;
+}
+.khaleesi .weeks {
+  zoom: 1;
+}
+.khaleesi .weeks:before,
+.khaleesi .weeks:after {
+  content: "";
+  display: table;
+}
+.khaleesi .weeks:after {
+  clear: both;
+}
+.khaleesi .weeks > div {
+  float: left;
+  margin-bottom: 1px;
+  margin-right: 1px;
+}
+.khaleesi .weeks > div:nth-child(7n) {
+  margin-right: 0;
+}
+.khaleesi .weeks > div:nth-child(7n + 1) {
+  clear: left;
+}
+.khaleesi .weeks > div:nth-last-child(-n + 7) {
+  margin-bottom: 0;
+}
+.khaleesi .day-base {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+.khaleesi .day-label {
+  background: slategray;
+  font: bold 10px arial, sans-serif;
+  color: white;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+.khaleesi .day {
+  position: relative;
+  background: lightgray;
+  font: 10px arial, sans-serif;
+  color: black;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+.khaleesi .day.selected {
+  background: yellow;
+}
+.khaleesi .day .number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+}
+.khaleesi .day .decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+.khaleesi .day.whole-day.arrival,
+.khaleesi .day.whole-day.departure {
+  background: yellow;
+}
+.khaleesi .day.whole-day.arrival-hover,
+.khaleesi .day.whole-day.departure-hover {
+  background: lightyellow;
+}
+.khaleesi .day.half-day.arrival-hover .decoration {
+  border-style: solid;
+  border-width: 0 0 20px 20px;
+  border-color: transparent transparent lightyellow transparent;
+}
+.khaleesi .day.half-day.departure-hover .decoration {
+  border-style: solid;
+  border-width: 20px 20px 0 0;
+  border-color: lightyellow transparent transparent transparent;
+}
+.khaleesi .day.half-day.arrival:not(.departure) .decoration {
+  border-style: solid;
+  border-width: 0 0 20px 20px;
+  border-color: transparent transparent yellow transparent;
+}
+.khaleesi .day.half-day.departure:not(.arrival) .decoration {
+  border-style: solid;
+  border-width: 20px 20px 0 0;
+  border-color: yellow transparent transparent transparent;
+}
+.khaleesi .day.half-day.arrival.departure .decoration {
+  width: 20px;
+  height: 20px;
+  background: yellow;
+}
+
 /*# sourceMappingURL=khaleesi.min.css.map*/

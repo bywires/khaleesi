@@ -10,6 +10,8 @@ export default React.createClass({
             <div
                 className={cx({
                     day: true,
+                    'whole-day': !this.props.day.halfDay,
+                    'half-day': this.props.day.halfDay,
                     arrival: this.props.day.arrival,
                     departure: this.props.day.departure,
                     selected: this.props.day.selected,
