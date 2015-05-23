@@ -26,7 +26,7 @@ describe('A Khaleesi store', () => {
         expect(store.getDeparture()).toEqual('2015-01-08');
     });
 
-    it('treats the third selection as arrival if before arrival and clears departure', () => {
+    it('treats the third selection as arrival if before arrival', () => {
         store.select('2015-01-04');
         store.select('2015-01-08');
         store.select('2015-01-01');
@@ -34,12 +34,20 @@ describe('A Khaleesi store', () => {
         expect(store.getDeparture()).toBeNull();
     });
 
-    it('treats the third selection as departure if after departure and maintains arrival', () => {
+    it('treats the third selection as arrival if after departure', () => {
         store.select('2015-01-01');
         store.select('2015-01-04');
         store.select('2015-01-08');
-        expect(store.getArrival()).toEqual('2015-01-01');
-        expect(store.getDeparture()).toEqual('2015-01-08');
+        expect(store.getArrival()).toEqual('2015-01-08');
+        expect(store.getDeparture()).toBeNull();
+    });
+
+    it('treats the third selection as arrival if between arrival departure', () => {
+        store.select('2015-01-01');
+        store.select('2015-01-08');
+        store.select('2015-01-04');
+        expect(store.getArrival()).toEqual('2015-01-04');
+        expect(store.getDeparture()).toBeNull();
     });
 
     it('treats the first hover as arrival', () => {
@@ -59,18 +67,18 @@ describe('A Khaleesi store', () => {
         expect(store.getArrivalHover()).toEqual('2015-01-01');
     });
 
-    it('treats hover after departure as departure', () => {
+    it('treats hover after departure as arrival', () => {
         store.select('2015-01-01');
         store.select('2015-01-04');
         store.hover('2015-01-08');
-        expect(store.getDepartureHover()).toEqual('2015-01-08');
+        expect(store.getArrivalHover()).toEqual('2015-01-08');
     });
 
-    it('ignores hover between arrival and departure', () => {
+    it('treats hover between arrival and departure as arrival', () => {
         store.select('2015-01-01');
         store.select('2015-01-08');
         store.hover('2015-01-04');
-        expect(store.getArrivalHover()).toBeNull();
+        expect(store.getArrivalHover()).toEqual('2015-01-04');
         expect(store.getDepartureHover()).toBeNull();
     });
 

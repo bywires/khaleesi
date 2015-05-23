@@ -1,5 +1,6 @@
 import React from 'react';
 import Day from './day';
+import _ from 'react/addons';
 
 var monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -7,6 +8,8 @@ var monthNames = [
 ];
 
 export default React.createClass({
+    mixins: [React.addons.PureRenderMixin],
+
     render() {
         return (
             <div className='month'>

@@ -35,11 +35,8 @@ export default class Store extends EventEmitter {
         else if(this.selected.length == 1 && id > this.selected[0]) {
             this.departureHover = id;
         }
-        else if(this.selected.length == 2 && id < this.selected[0]) {
+        else if(this.selected.length == 2 && id != this.selected[1]) {
             this.arrivalHover = id;
-        }
-        else if(this.selected.length == 2 && id > this.selected[1]) {
-            this.departureHover = id;
         }
 
         this.emit('change');
@@ -54,10 +51,6 @@ export default class Store extends EventEmitter {
         else if (this.selected.length == 1) {
             this.selected.push(id);
             this.selected.sort();
-        }
-        // two days selected and date is later than high date, expand selection
-        else if (this.selected.length == 2 && id > this.selected[1]) {
-            this.selected[1] = id;
         }
         // start new selection
         else {

@@ -1,7 +1,10 @@
 import React from 'react';
 import cx from 'react/lib/cx';
+import _ from 'react/addons';
 
 export default React.createClass({
+    mixins: [React.addons.PureRenderMixin],
+
     render() {
         return (
             <div

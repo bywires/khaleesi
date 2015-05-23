@@ -1,8 +1,11 @@
 import React from 'react';
 import Calendar from './calendar';
 import { range, idFromDate, normalizeYearMonth, firstDayOfFirstWeekOfMonth } from '../utils';
+import _ from 'react/addons';
 
 export default React.createClass({
+    mixins: [React.addons.PureRenderMixin],
+
     getInitialState() {
         return this.props.store;
     },
