@@ -41,15 +41,15 @@ describe('A Khaleesi component', () => {
 
     it('updates the store when a day is clicked', () => {
         click(find('day')[20]);
-        expect(store.getArrival()).toEqual('2015-06-20');
+        expect(store.getStart()).toEqual('2015-06-20');
     });
 
     it('updates the store when two days are clicked', () => {
         var days = find('day');
         click(days[20]);
         click(days[30]);
-        expect(store.getArrival()).toEqual('2015-06-20');
-        expect(store.getDeparture()).toEqual('2015-06-30');
+        expect(store.getStart()).toEqual('2015-06-20');
+        expect(store.getEnd()).toEqual('2015-06-30');
         days.slice(21, 30).forEach(day => expect(hasClass(day, 'selected')).toBeTruthy());
     });
 });

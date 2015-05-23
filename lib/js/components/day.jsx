@@ -12,11 +12,11 @@ export default React.createClass({
                     day: true,
                     'whole-day': !this.props.day.halfDay,
                     'half-day': this.props.day.halfDay,
-                    arrival: this.props.day.arrival,
-                    departure: this.props.day.departure,
+                    start: this.props.day.start,
+                    end: this.props.day.end,
                     selected: this.props.day.selected,
-                    'arrival-hover': this.props.day.arrivalHover,
-                    'departure-hover': this.props.day.departureHover
+                    'start-hover': this.props.day.startHover,
+                    'end-hover': this.props.day.endHover
                 })}
                 onMouseOver={this.dayOver}
                 onMouseOut={this.dayOut}

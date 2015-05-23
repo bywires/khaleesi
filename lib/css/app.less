@@ -100,41 +100,41 @@
     }
 
     &.whole-day {
-      &.arrival, &.departure {
+      &.start, &.end {
         background: @day-selected-color;
       }
 
-      &.arrival-hover, &.departure-hover {
+      &.start-hover, &.end-hover {
         background: @day-hover-color;
       }
     }
 
     &.half-day {
-      &.arrival-hover .decoration {
+      &.start-hover .decoration {
         border-style: solid;
         border-width: 0 0 @day-height @day-width;
         border-color: transparent transparent @day-hover-color transparent;
       }
 
-      &.departure-hover .decoration {
+      &.end-hover .decoration {
         border-style: solid;
         border-width: @day-height @day-width 0 0;
         border-color: @day-hover-color transparent transparent transparent;
       }
 
-      &.arrival:not(.departure) .decoration {
+      &.start:not(.end) .decoration {
         border-style: solid;
         border-width: 0 0 @day-height @day-width;
         border-color: transparent transparent @day-selected-color transparent;
       }
 
-      &.departure:not(.arrival) .decoration {
+      &.end:not(.start) .decoration {
         border-style: solid;
         border-width: @day-height @day-width 0 0;
         border-color: @day-selected-color transparent transparent transparent;
       }
 
-      &.arrival.departure .decoration {
+      &.start.end .decoration {
         width: @day-width;
         height: @day-height;
         background: @day-selected-color;

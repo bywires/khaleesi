@@ -13,37 +13,37 @@ export default class Store extends EventEmitter {
                 startMonth: null,
                 monthCount: 1,
                 selected: [],
-                arrival: null,
-                departure: null,
-                arrivalHover: null,
-                departureHover: null
+                start: null,
+                end: null,
+                startHover: null,
+                endHover: null
             },
             options
         );
     }
 
     hover(id) {
-        this.arrivalHover = null;
-        this.departureHover = null;
+        this.startHover = null;
+        this.endHover = null;
 
         if (this.selected.length == 0) {
-            this.arrivalHover = id;
+            this.startHover = id;
         }
         else if(this.selected.length == 1 && id < this.selected[0]) {
-            this.arrivalHover = id;
+            this.startHover = id;
         }
         else if(this.selected.length == 1 && id > this.selected[0]) {
-            this.departureHover = id;
+            this.endHover = id;
         }
         else if(this.selected.length == 2 && id != this.selected[1]) {
-            this.arrivalHover = id;
+            this.startHover = id;
         }
 
         this.emit('change');
     }
 
     select(id) {
-        // arrival and departure cannot be the same day
+        // start and end cannot be the same day
         if (this.selected == [id]) {
             return;
         }
@@ -57,54 +57,54 @@ export default class Store extends EventEmitter {
             this.selected = [id];
         }
 
-        this.arrival = this.selected[0];
-        this.departure = this.selected[1] || null;
+        this.start = this.selected[0];
+        this.end = this.selected[1] || null;
 
         this.emit('change');
     }
 
     unselect() {
         this.selected = [];
-        this.arrival = null;
-        this.departure = null;
+        this.start = null;
+        this.end = null;
         this.emit('change');
     }
 
-    getArrival() {
-        return this.arrival;
+    getStart() {
+        return this.start;
     }
 
-    getDeparture() {
-        return this.departure;
+    getEnd() {
+        return this.end;
     }
 
-    getArrivalHover() {
-        return this.arrivalHover;
+    getStartHover() {
+        return this.startHover;
     }
 
-    getDepartureHover() {
-        return this.departureHover;
+    getEndHover() {
+        return this.endHover;
     }
 
-    isArrival(id) {
-        return this.arrival == id;
+    isStart(id) {
+        return this.start == id;
     }
 
-    isDeparture(id) {
-        return this.departure == id;
+    isEnd(id) {
+        return this.end == id;
     }
 
-    isArrivalHover(id) {
-        return this.arrivalHover == id;
+    isStartHover(id) {
+        return this.startHover == id;
     }
 
-    isDepartureHover(id) {
-        return this.departureHover == id;
+    isEndHover(id) {
+        return this.endHover == id;
     }
     
     isSelected(id) {
-        var low = this.arrival,
-            high = this.departure || this.departureHover;
+        var low = this.start,
+            high = this.end || this.endHover;
 
         return low && high && (low < id && high > id)
     }

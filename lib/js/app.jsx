@@ -6,7 +6,7 @@ var store = new Store({
     startYear: 2015,
     startMonth: 5,
     monthCount: 4,
-    useHalfDays: false
+    useHalfDays: true
 });
 
 React.render(

@@ -56,10 +56,10 @@ export default React.createClass({
                     halfDay: state.useHalfDays,
                     id: id,
                     enabled: isInMonth,
-                    arrival: state.isArrival(id),
-                    departure: state.isDeparture(id),
-                    arrivalHover: state.isArrivalHover(id),
-                    departureHover: state.isDepartureHover(id),
+                    start: state.isStart(id),
+                    end: state.isEnd(id),
+                    startHover: state.isStartHover(id),
+                    endHover: state.isEndHover(id),
                     selected: state.isSelected(id)
                 };
 
