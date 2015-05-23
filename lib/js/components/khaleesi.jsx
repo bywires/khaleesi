@@ -1,7 +1,7 @@
 import React from 'react';
-import Calendar from './calendar';
-import { range, idFromDate, normalizeYearMonth, firstDayOfFirstWeekOfMonth } from '../utils';
 import _ from 'react/addons';
+import Calendar from './calendar';
+import { range, keyFromDate, normalizeYearMonth, firstDayOfFirstWeekOfMonth } from '../utils';
 
 export default React.createClass({
     mixins: [React.addons.PureRenderMixin],
@@ -23,11 +23,9 @@ export default React.createClass({
     },
 
     render() {
-        var id = idFromDate(this.props.store.startYear, this.props.store.startMonth);
-
         return (
             <div className="khaleesi">
-                <Calendar id={id} months={this.buildMonthsState()} store={this.props.store} />
+                <Calendar months={this.buildMonthsState()} store={this.props.store} />
             </div>
         );
     },
@@ -44,23 +42,24 @@ export default React.createClass({
         [year, month] = normalizeYearMonth(year, month);
 
         var date = firstDayOfFirstWeekOfMonth(year, month),
-            state = this.props.store;
+            state = this.props.store,
+            monthKey = keyFromDate(year, month);
 
         // always show 6 weeks (42 days) even if month is less
         var days = range(42).map(() => {
             let isInMonth = date.getMonth() == month,
                 day =  isInMonth ? date.getDate() : null,
-                id = isInMonth ? idFromDate(year, month, day) : 'disabled',
+                key = (isInMonth ? '' : monthKey + '-disabled-') + keyFromDate(year, month, date.getDate()),
                 props = {
                     day: day,
                     halfDay: state.useHalfDays,
-                    id: id,
+                    key: key,
                     enabled: isInMonth,
-                    start: state.isStart(id),
-                    end: state.isEnd(id),
-                    startHover: state.isStartHover(id),
-                    endHover: state.isEndHover(id),
-                    selected: state.isSelected(id)
+                    start: state.isStart(key),
+                    end: state.isEnd(key),
+                    startHover: state.isStartHover(key),
+                    endHover: state.isEndHover(key),
+                    selected: state.isSelected(key)
                 };
 
             date.setDate(date.getDate() + 1);
@@ -69,6 +68,7 @@ export default React.createClass({
         });
 
         return {
+            key: monthKey,
             year: year,
             month: month,
             days: days

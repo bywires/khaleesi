@@ -1,6 +1,6 @@
 import React from 'react';
-import cx from 'react/lib/cx';
 import _ from 'react/addons';
+import cx from 'classnames';
 
 export default React.createClass({
     mixins: [React.addons.PureRenderMixin],
@@ -29,7 +29,7 @@ export default React.createClass({
     },
 
     dayOver() {
-        this.dayHover(this.props.day.id);
+        this.dayHover(this.props.day.key);
     },
 
     dayOut() {
@@ -46,7 +46,7 @@ export default React.createClass({
 
     click() {
         if (this.props.day.enabled) {
-            this.props.store.select(this.props.day.id);
+            this.props.store.select(this.props.day.key);
         } else {
             this.props.store.unselect();
         }

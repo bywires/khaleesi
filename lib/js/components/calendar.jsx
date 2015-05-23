@@ -1,6 +1,6 @@
 import React from 'react';
-import Month from './month';
 import _ from 'react/addons';
+import Month from './month';
 
 export default React.createClass({
     mixins: [React.addons.PureRenderMixin],
@@ -23,6 +23,7 @@ export default React.createClass({
                 <div className="months">
                     {this.props.months.map(month =>
                             <Month
+                                key={month.key}
                                 store={this.props.store}
                                 year={month.year}
                                 month={month.month}

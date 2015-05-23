@@ -9,9 +9,9 @@ export default class Store extends EventEmitter {
 
         this.startYear = options.startYear;
         this.startMonth = options.startMonth;
-        this.monthCount = options.monthCount;
-        this.useRangeSelection = options.useRangeSelection;
-        this.useHalfDays = options.useHalfDays;
+        this.monthCount = options.monthCount || 1;
+        this.useRangeSelection = options.useRangeSelection || false;
+        this.useHalfDays = options.useHalfDays || false;
         this.startHover = null;
         this.endHover = null;
 
@@ -37,9 +37,9 @@ export default class Store extends EventEmitter {
         }
     }
 
-    hover(id) {
+    hover(key) {
         if (!this.useRangeSelection) {
-            this.startHover = id;
+            this.startHover = key;
             this.emit('change');
             return;
         }
@@ -48,41 +48,41 @@ export default class Store extends EventEmitter {
         this.endHover = null;
 
         if (this.selected.length == 0) {
-            this.startHover = id;
+            this.startHover = key;
         }
-        else if(this.selected.length == 1 && id < this.selected[0]) {
-            this.startHover = id;
+        else if(this.selected.length == 1 && key < this.selected[0]) {
+            this.startHover = key;
         }
-        else if(this.selected.length == 1 && id > this.selected[0]) {
-            this.endHover = id;
+        else if(this.selected.length == 1 && key > this.selected[0]) {
+            this.endHover = key;
         }
-        else if(this.selected.length == 2 && id != this.selected[1]) {
-            this.startHover = id;
+        else if(this.selected.length == 2 && key != this.selected[1]) {
+            this.startHover = key;
         }
 
         this.emit('change');
     }
 
-    select(id) {
+    select(key) {
         if (!this.useRangeSelection) {
-            this.selected = [id];
-            this.start = id;
+            this.selected = [key];
+            this.start = key;
             this.emit('change');
             return;
         }
 
         // start and end cannot be the same day
-        if (this.selected == [id]) {
+        if (this.selected == [key]) {
             return;
         }
         // combine new date with old and sort
         else if (this.selected.length == 1) {
-            this.selected.push(id);
+            this.selected.push(key);
             this.selected.sort();
         }
         // start new selection
         else {
-            this.selected = [id];
+            this.selected = [key];
         }
 
         this.start = this.selected[0];
@@ -114,27 +114,27 @@ export default class Store extends EventEmitter {
         return this.endHover;
     }
 
-    isStart(id) {
-        return this.start == id;
+    isStart(key) {
+        return this.start == key;
     }
 
-    isEnd(id) {
-        return this.end == id;
+    isEnd(key) {
+        return this.end == key;
     }
 
-    isStartHover(id) {
-        return this.startHover == id;
+    isStartHover(key) {
+        return this.startHover == key;
     }
 
-    isEndHover(id) {
-        return this.endHover == id;
+    isEndHover(key) {
+        return this.endHover == key;
     }
     
-    isSelected(id) {
+    isSelected(key) {
         var low = this.start,
             high = this.end || this.endHover;
 
-        return low && high && (low < id && high > id)
+        return low && high && (low < key && high > key)
     }
 
     nextPage() {
